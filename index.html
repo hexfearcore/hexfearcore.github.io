@@ -1,64 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HexFearCore | Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HexFearCore | Dark Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
+      padding: 0;
+      font-family: 'Fira Code', monospace;
       background-color: #0f0f0f;
-      font-family: 'Courier New', monospace;
-      color: #00ffcc;
-      text-align: center;
-      padding: 40px;
+      color: #00ffc3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      min-height: 100vh;
+      padding: 40px 20px;
     }
+
     h1 {
-      font-size: 3em;
-      margin-bottom: 0;
+      font-size: 3rem;
+      text-align: center;
+      animation: glow 2s ease-in-out infinite alternate;
     }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #00ffc3, 0 0 20px #00ffc3;
+      }
+      to {
+        text-shadow: 0 0 20px #00fff7, 0 0 40px #00fff7;
+      }
+    }
+
     h2 {
-      font-size: 1.5em;
-      color: #00ffaa;
+      font-weight: normal;
+      font-size: 1.5rem;
+      color: #aaa;
+      text-align: center;
+      margin-top: -10px;
     }
-    a {
-      color: #00ffee;
-      text-decoration: none;
-    }
+
     .section {
-      margin: 50px 0;
+      margin: 40px 0;
+      width: 100%;
+      max-width: 800px;
+      text-align: center;
     }
+
     .badges img {
       margin: 6px;
     }
-    .project {
-      margin: 20px 0;
+
+    a {
+      color: #00ffc3;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-shadow: 0 0 10px #00fff7;
+    }
+
+    .socials a {
+      display: inline-block;
+      margin: 10px;
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      border: 1px solid #00ffc3;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .socials a:hover {
+      background-color: #00ffc3;
+      color: #000;
+    }
+
+    footer {
+      margin-top: auto;
+      font-size: 0.9rem;
+      color: #666;
     }
   </style>
 </head>
 <body>
 
-  <h1>👋 I'm HexFearCore</h1>
-  <h2>AI Programmer • Ethical Hacker • Python Dev</h2>
+  <h1>👾 HexFearCore</h1>
+  <h2>AI Developer | Ethical Hacker | Terminal Wizard</h2>
 
   <div class="section">
-    <h2>🚀 My Tech Stack</h2>
+    <h2>🧠 About Me</h2>
+    <p>I build advanced tools using Python, Termux, and Bash. Passionate about ethical hacking, automation, cybersecurity, and beautiful terminal experiences. I code like a wizard in the dark 🌒.</p>
+  </div>
+
+  <div class="section">
+    <h2>🚀 Tech Stack</h2>
     <div class="badges">
       <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
       <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2b%2b&logoColor=white"/>
       <img src="https://img.shields.io/badge/HTML5-e34c26?style=for-the-badge&logo=html5&logoColor=white"/>
       <img src="https://img.shields.io/badge/CSS3-264de4?style=for-the-badge&logo=css3&logoColor=white"/>
       <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
+      <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white"/>
       <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"/>
       <img src="https://img.shields.io/badge/Termux-000000?style=for-the-badge&logo=linux&logoColor=white"/>
-      <img src="https://img.shields.io/badge/Ethical%20Hacking-222222?style=for-the-badge&logo=hackthebox&logoColor=green"/>
-      <img src="https://img.shields.io/badge/Web%20Design-ff69b4?style=for-the-badge&logo=figma&logoColor=white"/>
+      <img src="https://img.shields.io/badge/Ethical%20Hacking-111111?style=for-the-badge&logo=hackthebox&logoColor=green"/>
+      <img src="https://img.shields.io/badge/Web%20Design-e91e63?style=for-the-badge&logo=figma&logoColor=white"/>
     </div>
   </div>
-  <div class="section">
-    <h2>📬 Contact</h2>
-    <p><a href="https://t.me/hexfearcore">Telegram</a> • <a href="https://www.instagram.com/hexfearcore">Instagram</a></p>
+
+  <div class="section socials">
+    <h2>🔗 Connect With Me</h2>
+    <a href="https://t.me/hexfearcore" target="_blank">Telegram</a>
+    <a href="https://instagram.com/hexfearcore" target="_blank">Instagram</a>
+    <a href="https://github.com/hexfearcore" target="_blank">GitHub</a>
   </div>
+
+  <footer>
+    <p>⚠️ All content is for educational and ethical purposes only.</p>
+  </footer>
 
 </body>
 </html>
