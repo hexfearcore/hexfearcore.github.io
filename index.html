@@ -1,165 +1,129 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HEXFEARCORE Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HEXFEARCORE</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f0f0f;
-      --text: #00ffc3;
-      --hover: #00fff7;
+      --bg: #000000;
+      --text: #00ffcc;
+      --highlight: #00ffff;
+      --light-bg: #ffffff;
+      --light-text: #111111;
     }
-
-    [data-theme="light"] {
-      --bg: #ffffff;
-      --text: #0f0f0f;
-      --hover: #00c3ff;
+    [data-theme='light'] {
+      --bg: var(--light-bg);
+      --text: var(--light-text);
     }
-
     body {
       margin: 0;
       font-family: 'Fira Code', monospace;
       background-color: var(--bg);
       color: var(--text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
       overflow-x: hidden;
     }
-
+    .matrix-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      z-index: -2;
+      opacity: 0.2;
+    }
+    canvas#matrix {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.4;
+    }
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    .center {
+      text-align: center;
+      padding: 100px 20px 50px;
+    }
     h1 {
       font-size: 3em;
-      text-align: center;
-      animation: glow 2s ease-in-out infinite alternate;
+      animation: glow 1s infinite alternate;
     }
-
     @keyframes glow {
-      from {
-        text-shadow: 0 0 10px var(--text);
-      }
-      to {
-        text-shadow: 0 0 20px var(--hover);
-      }
+      from { text-shadow: 0 0 10px var(--text); }
+      to { text-shadow: 0 0 20px var(--highlight); }
     }
-
-    h2 {
-      font-weight: normal;
+    .typing {
       font-size: 1.5em;
-      margin-top: -10px;
-      color: var(--hover);
-      text-align: center;
+      color: var(--highlight);
+      height: 30px;
+      margin-top: -20px;
     }
-
     .section {
-      margin: 40px 0;
-      width: 100%;
       max-width: 800px;
+      margin: 50px auto;
+      padding: 0 20px;
       text-align: center;
     }
-
     .badges img {
       margin: 6px;
     }
-
-    a {
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-shadow: 0 0 10px var(--hover);
-    }
-
     .socials a {
-      display: inline-block;
       margin: 10px;
-      font-size: 1rem;
       padding: 10px 20px;
+      color: var(--text);
       border: 1px solid var(--text);
-      border-radius: 8px;
-      transition: all 0.3s ease;
+      border-radius: 6px;
+      display: inline-block;
+      transition: all 0.3s;
     }
-
     .socials a:hover {
-      background-color: var(--text);
+      background: var(--text);
       color: var(--bg);
     }
-
-    .toggle {
+    .theme-toggle {
       position: fixed;
       top: 20px;
       right: 20px;
       background: var(--text);
       color: var(--bg);
+      padding: 8px 12px;
       border: none;
-      padding: 8px 16px;
       border-radius: 6px;
       cursor: pointer;
-      font-family: 'Fira Code', monospace;
-      font-weight: bold;
     }
-
-    #particles-js {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      width: 100%;
-      z-index: -1;
-    }
-
-    form input, form textarea {
-      width: 80%;
-      max-width: 400px;
-      margin: 10px auto;
-      padding: 10px;
-      border: 1px solid var(--text);
-      background: transparent;
-      color: var(--text);
-      font-family: 'Fira Code', monospace;
-    }
-
-    form button {
-      padding: 10px 20px;
-      border: none;
-      background: var(--text);
-      color: var(--bg);
-      font-family: 'Fira Code', monospace;
-      cursor: pointer;
-    }
-
     footer {
-      margin-top: 60px;
-      font-size: 0.9rem;
-      color: #777;
+      text-align: center;
+      font-size: 0.9em;
+      margin: 40px 0;
+      color: #888;
     }
   </style>
 </head>
 <body>
 
-<button class="toggle" onclick="toggleTheme()">Toggle Theme</button>
+<button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
 
+<div class="matrix-bg"><canvas id="matrix"></canvas></div>
 <div id="particles-js"></div>
 
-<h1 id="typing"></h1>
-<h2>AI Developer | Ethical Hacker | Terminal Wizard</h2>
-
-<div class="section">
-  <h2>About Me</h2>
-  <p>I build advanced tools using Python, Termux, and Bash. Passionate about ethical hacking, automation, and crafting beautiful command-line experiences. I code like a wizard in the dark 🧙‍♂️.</p>
+<div class="center">
+  <h1>HEXFEARCORE</h1>
+  <div class="typing" id="typing"></div>
 </div>
 
 <div class="section">
-  <h2>Tech Stack</h2>
+  <h2>🚀 Tech Stack</h2>
   <div class="badges">
     <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
     <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2b%2b&logoColor=white"/>
-    <img src="https://img.shields.io/badge/HTML5-e34c26?style=for-the-badge&logo=html5&logoColor=white"/>
-    <img src="https://img.shields.io/badge/CSS3-264de4?style=for-the-badge&logo=css3&logoColor=white"/>
-    <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"/>
     <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"/>
     <img src="https://img.shields.io/badge/Termux-000000?style=for-the-badge&logo=linux&logoColor=white"/>
     <img src="https://img.shields.io/badge/Ethical%20Hacking-111111?style=for-the-badge&logo=hackthebox&logoColor=green"/>
@@ -167,14 +131,14 @@
 </div>
 
 <div class="section socials">
-  <h2>Connect With Me</h2>
+  <h2>🔗 Connect</h2>
   <a href="https://t.me/hexfearcore" target="_blank">Telegram</a>
   <a href="https://instagram.com/hexfearcore" target="_blank">Instagram</a>
   <a href="https://github.com/hexfearcore" target="_blank">GitHub</a>
 </div>
 
 <div class="section">
-  <h2>Contact Me</h2>
+  <h2>📬 Contact Me</h2>
   <form onsubmit="sendTelegram(event)">
     <input type="text" id="name" placeholder="Your Name" required /><br/>
     <input type="email" id="email" placeholder="Your Email" required /><br/>
@@ -183,81 +147,91 @@
   </form>
 </div>
 
-<footer>
-  ⚠️ All content is for educational and ethical purposes only.
-</footer>
+<footer>⚠️ For educational & ethical purposes only.</footer>
 
-<!-- Typing Effect -->
+<!-- Scripts -->
 <script>
-const text = "HEXFEARCORE";
-let i = 0;
-function type() {
-  if (i < text.length) {
-    document.getElementById("typing").textContent += text.charAt(i);
-    i++;
-    setTimeout(type, 80);
+const messages = ["AI Developer", "Ethical Hacker", "CLI Wizard", "Python Coder"];
+let i = 0, j = 0, current = "", isDeleting = false;
+function typeEffect() {
+  if (i < messages.length) {
+    if (!isDeleting && j <= messages[i].length) {
+      current = messages[i].substring(0, j++);
+    } else if (isDeleting && j >= 0) {
+      current = messages[i].substring(0, j--);
+    }
+    document.getElementById("typing").textContent = current;
+    if (!isDeleting && j > messages[i].length) {
+      isDeleting = true;
+      setTimeout(typeEffect, 1200);
+    } else if (isDeleting && j === 0) {
+      isDeleting = false;
+      i = (i + 1) % messages.length;
+    }
+    setTimeout(typeEffect, isDeleting ? 50 : 120);
   }
 }
-type();
-</script>
+typeEffect();
 
-<!-- Theme Toggle -->
-<script>
 function toggleTheme() {
   const theme = document.body.getAttribute("data-theme");
-  document.body.setAttribute("data-theme", theme === "light" ? "dark" : "light");
+  const newTheme = theme === "light" ? "dark" : "light";
+  document.body.setAttribute("data-theme", newTheme);
+  localStorage.setItem("theme", newTheme);
 }
-</script>
+document.body.setAttribute("data-theme", localStorage.getItem("theme") || "dark");
 
-<!-- Telegram Contact -->
-<script>
 function sendTelegram(e) {
   e.preventDefault();
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
-
-  const fullMessage = `New message from GitHub Pages:\n\n👤 Name: ${name}\n📧 Email: ${email}\n💬 Message:\n${message}`;
-
-  const encoded = encodeURIComponent(fullMessage);
-  const telegramURL = `https://t.me/share/url?url=&text=${encoded}`;
-
-  window.open(telegramURL, "_blank");
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+  const text = `New Message:
+👤 Name: ${name}
+📧 Email: ${email}
+💬 Message: ${message}`;
+  window.open(`https://t.me/share/url?url=&text=${encodeURIComponent(text)}`, "_blank");
 }
-</script>
 
-<!-- Particles.js CDN -->
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+let letters = Array(256).join("0").split("");
+setInterval(function () {
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#0F0";
+  letters = letters.map((y, index) => {
+    const text = String.fromCharCode(3e4 + Math.random() * 33);
+    ctx.fillText(text, index * 10, y);
+    return y > 100 + Math.random() * 1e4 ? 0 : y + 10;
+  });
+}, 50);
+</script>
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
 particlesJS("particles-js", {
-  "particles": {
-    "number": {"value": 60},
-    "color": {"value": "#00ffc3"},
-    "shape": {"type": "circle"},
-    "opacity": {"value": 0.6},
-    "size": {"value": 3},
-    "line_linked": {
-      "enable": true,
-      "distance": 120,
-      "color": "#00fff7",
-      "opacity": 0.4,
-      "width": 1
+  particles: {
+    number: { value: 50 },
+    color: { value: "#00ffc3" },
+    shape: { type: "circle" },
+    opacity: { value: 0.5 },
+    size: { value: 3 },
+    line_linked: {
+      enable: true,
+      distance: 120,
+      color: "#00ffff",
+      opacity: 0.4,
+      width: 1
     },
-    "move": {
-      "enable": true,
-      "speed": 2,
-      "direction": "none",
-      "out_mode": "out"
-    }
+    move: { enable: true, speed: 2 }
   },
-  "interactivity": {
-    "events": {
-      "onhover": {"enable": true, "mode": "repulse"}
-    }
+  interactivity: {
+    events: { onhover: { enable: true, mode: "repulse" } }
   },
-  "retina_detect": true
+  retina_detect: true
 });
 </script>
-
 </body>
-</html>
+      </html>
