@@ -1,3 +1,4 @@
+![PORTFOLIO Screenshot](portfolio.jpg)
 # 🌐 HEXFEARCORE — Developer Portfolio Website
 
 Welcome to the source code of my **personal portfolio website**, built using `HTML` and hosted with **GitHub Pages**.
